@@ -5,3 +5,4 @@ Packages Used:
 python-a2s
 py-cord
 python-dotenv
+mysql-connector-python 
