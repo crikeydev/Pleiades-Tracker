@@ -122,5 +122,9 @@ async def removechannel(ctx, channel_id):
     except:
         await ctx.respond("Are you sure you inserted a channel ID?")
 
+@bot.slash_command(guild_ids=[1068433342812389436])
+async def thejokeu(ctx):
+    await ctx.respond("https://i.imgur.com/lwEKkud.jpeg")
+
 
 bot.run(bot_token)
