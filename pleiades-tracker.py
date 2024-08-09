@@ -126,5 +126,38 @@ async def removechannel(ctx, channel_id):
 async def thejokeu(ctx):
     await ctx.respond("https://i.imgur.com/lwEKkud.jpeg")
 
+@bot.slash_command(guild_ids=[1068433342812389436])
+async def addserver(ctx, channelID, serverIP):
+    query = "SELECT channelID FROM channeltoserver WHERE channelID = (%s)"
+    channelResult = cur.execute(query, channelID)
+
+    if channelResult is None or channelResult[0] == '':
+        await ctx.respond("The channelID entered does not currently exist within the database!")
+    else:
+        query = "SELECT servers FROM channeltoserver WHERE channelID = (%s)"
+        serverResult = cur.execute(query, channelID)
+
+        if serverResult is None or channelResult[0] == '':
+            pass # code to create json format and add the serverIP to it
+        else:
+            pass # code to add it to the current json file present
+
+@bot.slash_command(guild_ids=[1068433342812389436])
+async def removeserver(ctx, channelID, serverIP):
+    query = "SELECT channelID FROM channeltoserver WHERE channelID = (%s)"
+    channelResult = cur.execute(query, channelID)
+
+    if channelResult is None or channelResult[0] == '':
+        await ctx.respond("The channelID entered does not currently exist within the database!")
+    else:
+        query = "SELECT servers FROM channeltoserver WHERE channelID = (%s)"
+        serverResult = cur.execute(query, channelID)
+
+        if serverResult is None or channelResult[0] == '':
+            ctx.respond("There are currently no servers linked to the channel ID mentioned.")
+        else:
+            pass # code to deal with server removal.
+
+
 
 bot.run(bot_token)
